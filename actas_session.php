@@ -28,6 +28,10 @@ if ($_POST) {
         $aAlumnos[] = ["nombre" => $nombre, "aNotas" => [$nota1, $nota2]];
         $_SESSION["listadoAlumnos"] = $aAlumnos;
     }
+       if(isset($_POST["btnEliminar"])){
+        session_destroy();
+        $aAlumnos = array();
+}
 }
 
 if (isset($_GET["pos"]) && $_GET["pos"]>= 0) {
@@ -103,13 +107,15 @@ if (isset($_GET["pos"]) && $_GET["pos"]>= 0) {
                 </div>
                 </form>
                 
+                
     </div>
     <div class="row">
-            <div class="col-12 my-3">
-                <h5>Promedio de la cursada: <?php echo count($aAlumnos) > 0? number_format($sumPromedios/count($aAlumnos) +1,2,".",","): 0; ?></h5>
-                <button type="submit" class="btn btn-danger float-end" >Limpiar Acta</button>
-            </div>
-        </div>
+    <div class="col-12 my-3">
+    <h5>Promedio de la cursada: <?php echo count($aAlumnos) > 0? number_format($sumPromedios/count($aAlumnos) +1,2,".",","): 0; ?> </h5>
+    <form method="POST">
+        <button name="btnEliminar" type="submit" class="btn btn-danger float-end" >Limpiar Acta </button>
+    </form>
+</div>
     </main>
     
     
