@@ -6,11 +6,12 @@ error_reporting(E_ALL);
 session_start();
 
 function promediar($aNotas){
-    $suma=0;
-    foreach ($aNotas as $nota){
-       $suma+=$nota;
+    $suma = 0;
+    $resultado = 0;
+    foreach($aNotas as $nota){
+        $suma += $nota;
     }
-    return $suma/count($aNotas);
+    return $suma / count($aNotas);
 }
 
 
@@ -106,7 +107,7 @@ if (isset($_GET["pos"]) && $_GET["pos"]>= 0) {
                 <div class="row">
                 <div class="col-12 my-3">
     <div class="d-flex justify-content-between">
-        <h5>Promedio de la cursada: <?php echo count($aAlumnos) > 0? number_format($sumPromedios/count($aAlumnos) +1,2,".",","): 0; ?> </h5>
+        <h5>Promedio de la cursada: <?php echo count($aAlumnos) > 0? number_format($sumPromedios/count($aAlumnos) ,2,".",","): 0; ?> </h5>
         <form method="POST">
             <button name="btnEliminar" type="submit" class="btn btn-danger" >Limpiar Acta </button>
         </form>
